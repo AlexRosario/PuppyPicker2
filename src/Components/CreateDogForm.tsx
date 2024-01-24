@@ -58,6 +58,7 @@ export const CreateDogForm = () =>
 					disabled={isLoading}
 					value={name}
 					onChange={(e) => setName(e.target.value)}
+					
 				/>
 				<label htmlFor="description">Dog Description</label>
 				<textarea

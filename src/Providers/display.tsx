@@ -19,7 +19,7 @@ type TDisplayProvider = {
 
 const DisplayContext = createContext<TDisplayProvider>({} as TDisplayProvider);
 
-export const DisplayProvider = ({ children }: { children: ReactNode }) => {
+export const DisplayProvider = ({ children } : { children: ReactNode }) => {
 	const [activeTab, setActiveTab] = useState<ActiveTab>("none");
 	const [allDogs, setAllDogs] = useState<Dog[] | null>(null);
 

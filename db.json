@@ -118,6 +118,13 @@
       "description": "ss",
       "isFavorite": false,
       "id": 24
+    },
+    {
+      "name": "forky scruffles",
+      "image": "/public/assets/blue-heeler.png",
+      "description": "vivacious",
+      "isFavorite": false,
+      "id": 25
     }
   ]
 }
