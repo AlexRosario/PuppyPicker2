@@ -125,6 +125,20 @@
       "description": "vivacious",
       "isFavorite": false,
       "id": 25
+    },
+    {
+      "name": "norway",
+      "image": "/public/assets/blue-heeler.png",
+      "description": "cold",
+      "isFavorite": false,
+      "id": 27
+    },
+    {
+      "name": "eleveneleven",
+      "image": "/public/assets/blue-heeler.png",
+      "description": "e",
+      "isFavorite": false,
+      "id": 28
     }
   ]
 }

@@ -1,9 +1,16 @@
 import { useDisplayDogs } from "../Providers/display";
 import { DogCard } from "./DogCard";
-import { Requests } from "../api";
 
-export const Dogs = () => {
-	const { allDogs, activeTab, setAllDogs } = useDisplayDogs();
+type HandleFunctions = {
+	handleDeleteDog: (dogId: number) => void;
+	handleHeartClick: (dogId: number) => void;
+};
+
+export const Dogs = ({
+	handleDeleteDog,
+	handleHeartClick,
+}: HandleFunctions) => {
+	const { allDogs, activeTab } = useDisplayDogs();
 
 	const favoriteDogs = allDogs?.filter((dog) => dog.isFavorite);
 	const unfavoriteDogs = allDogs?.filter((dog) => !dog.isFavorite);
@@ -15,30 +22,6 @@ export const Dogs = () => {
 			? favoriteDogs
 			: unfavoriteDogs;
 
-	const handleDeleteDog = (dogId: number) => {
-		setAllDogs(allDogs!.filter((dog) => dog.id !== dogId));
-		Requests.deleteDog(dogId) //force break
-			.catch((error) => {
-				console.error("Error deleting dog:", error);
-				setAllDogs(allDogs);
-			});
-	};
-
-	const handleIsFavorite = (dogId: number) => {
-		setAllDogs(
-			allDogs!.map((dog) =>
-				dog.id === dogId ? { ...dog, isFavorite: !dog.isFavorite } : dog
-			)
-		);
-		const dog = allDogs!.find((dog) => dog.id === dogId);
-		if (dog) {
-			Requests.updateDog(dogId, dog.isFavorite) //force break
-				.catch((error) => {
-					console.error("Error updating dog:", error);
-					setAllDogs(allDogs);
-				});
-		}
-	};
 	return (
 		<>
 			{dogsToDisplay?.map((dog) => (
@@ -47,8 +30,8 @@ export const Dogs = () => {
 					key={dog.id}
 					isLoading={false}
 					onTrashIconClick={() => handleDeleteDog(dog.id)}
-					onHeartClick={() => handleIsFavorite(dog.id)}
-					onEmptyHeartClick={() => handleIsFavorite(dog.id)}
+					onHeartClick={() => handleHeartClick(dog.id)}
+					onEmptyHeartClick={() => handleHeartClick(dog.id)}
 				/>
 			))}
 			;

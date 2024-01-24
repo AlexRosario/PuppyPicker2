@@ -6,21 +6,15 @@ const myHeaders = {
 };
 export const Requests = {
 	// should return a promise with all dogs in the database
-	getAllDogs: async () => {
-		const response = await fetch(baseUrl + "/dogs", {
+	getAllDogs: () => {
+		return fetch(baseUrl + "/dogs", {
 			method: "GET",
 			headers: myHeaders,
-		});
-		return (await response.json()) as Promise<Dog[]>;
+		}).then((response) => response.json());
 	},
 
-	postDog: async ({
-		name,
-		image,
-		description,
-		isFavorite,
-	}: Omit<Dog, "id">) => {
-		const data = await fetch(baseUrl + "/dogs", {
+	postDog: ({ name, image, description, isFavorite }: Omit<Dog, "id">) => {
+		return fetch(baseUrl + "/dogs", {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
@@ -29,28 +23,25 @@ export const Requests = {
 				description: description,
 				isFavorite: isFavorite,
 			}),
-		});
-		return (await data.json()) as Promise<Dog[]>;
+		}).then((response) => response.json());
 	},
 
 	// should delete a dog from the database
-	deleteDog: async (idNum: number) => {
-		const data = await fetch(baseUrl + `/dogs/${idNum}`, {
+	deleteDog: (idNum: number) => {
+		return fetch(baseUrl + `/dogs/${idNum}`, {
 			method: "DELETE",
 			headers: myHeaders,
-		});
-		return (await data.json()) as Promise<Dog[]>;
+		}).then((response) => response.json());
 	},
 
-	updateDog: async (idNum: number, isFavorite: boolean) => {
-		const dog = await fetch(baseUrl + `/dogs/${idNum}`, {
+	updateDog: (idNum: number, isFavorite: boolean) => {
+		return fetch(baseUrl + `/dogs/${idNum}`, {
 			method: "PATCH",
 			headers: myHeaders,
 			body: JSON.stringify({
 				isFavorite: !isFavorite,
 			}),
-		});
-		return (await dog.json()) as Promise<Dog[]>;
+		}).then((response) => response.json());
 	},
 
 	// Just a dummy function for use in the playground
