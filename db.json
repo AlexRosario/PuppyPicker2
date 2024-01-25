@@ -4,14 +4,14 @@
       "name": "Anthony",
       "image": "/public/assets/cowardly.png",
       "description": "plum Savings female Ghana programming solutions miniaturise",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 1
     },
     {
       "name": "Asa",
       "image": "/public/assets/dalmation.png",
       "description": "Minivan Neither Road Movies radian",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 8
     },
     {
@@ -39,7 +39,7 @@
       "name": "Art",
       "image": "/public/assets/blue-heeler.png",
       "description": "Global ha Genderflux payment Metal pixel Money",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 12
     },
     {
@@ -53,14 +53,14 @@
       "name": "Kris",
       "image": "/public/assets/blue-heeler.png",
       "description": "Beryllium Chevrolet partnerships focus Southeast Poland salmon",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 15
     },
     {
       "name": "Trudie",
       "image": "/public/assets/boxer.png",
       "description": "connecting blue National Movies Interactions ack Tandem Shirt",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 16
     },
     {
@@ -81,7 +81,7 @@
       "name": "Newton",
       "image": "/public/assets/blue-heeler.png",
       "description": "Planner maxime invoice ROI granular ouch Franc",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 19
     },
     {
@@ -95,7 +95,7 @@
       "name": "Markie",
       "image": "/public/assets/boxer.jpeg",
       "description": "more cheese please",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 21
     },
     {
@@ -123,14 +123,14 @@
       "name": "forky scruffles",
       "image": "/public/assets/blue-heeler.png",
       "description": "vivacious",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 25
     },
     {
       "name": "norway",
       "image": "/public/assets/blue-heeler.png",
       "description": "cold",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 27
     },
     {
@@ -139,6 +139,27 @@
       "description": "e",
       "isFavorite": false,
       "id": 28
+    },
+    {
+      "name": "wise",
+      "image": "/public/assets/Golden.jpeg",
+      "description": "crack",
+      "isFavorite": false,
+      "id": 29
+    },
+    {
+      "name": "Sgt. Slaughter",
+      "image": "/public/assets/chihuahua.avif",
+      "description": "\"Hoorah, motherfuckers!\"\n",
+      "isFavorite": true,
+      "id": 30
+    },
+    {
+      "name": "Grobe",
+      "image": "/public/assets/boxer.jpeg",
+      "description": "Despondent know it all",
+      "isFavorite": false,
+      "id": 31
     }
   ]
 }

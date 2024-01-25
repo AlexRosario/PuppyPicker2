@@ -1,7 +1,7 @@
 import { CreateDogForm } from "./Components/CreateDogForm";
 import { Dogs } from "./Components/Dogs";
 import { Section } from "./Components/Section";
-import { useDisplayDogs } from "./Providers/display";
+import { useDisplayDogs } from "./Providers/DogProvider";
 import { Requests } from "./api";
 
 export function App() {

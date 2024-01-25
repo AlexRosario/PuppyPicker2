@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useDisplayDogs } from "../Providers/display";
+import { useDisplayDogs } from "../Providers/DogProvider";
 
 export const Section = ({
 	label,
@@ -9,9 +9,9 @@ export const Section = ({
 	label: string;
 	children: ReactNode;
 }) => {
-	const { activeTab, setActiveTab, allDogs } = useDisplayDogs();
-	const favoriteDogs = allDogs?.filter((dog) => dog.isFavorite);
-	const unfavoriteDogs = allDogs?.filter((dog) => !dog.isFavorite);
+	const { activeTab, setActiveTab, favoriteDogs, unfavoriteDogs } =
+		useDisplayDogs();
+
 	return (
 		<section id="main-section">
 			<div className="container-header">

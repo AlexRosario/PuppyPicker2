@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
-import { useDisplayDogs } from "../Providers/display";
+import { useDisplayDogs } from "../Providers/DogProvider";
 import { Requests } from "../api";
 import toast from "react-hot-toast";
-import { Dog } from "../types";
 
 const defaultSelectedImage = dogPictures.BlueHeeler;
 export const CreateDogForm = () =>
@@ -15,32 +14,35 @@ export const CreateDogForm = () =>
 		const [image, setImage] = useState(defaultSelectedImage);
 		const [isLoading, setIsLoading] = useState(false);
 
-		const { setAllDogs } = useDisplayDogs();
-		const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-			e.preventDefault();
-			setIsLoading(true);
-			Requests.postDog({ name, description, image, isFavorite })
-				.catch(() => console.error("Error: could not post."))
-				.then(() => {
-					toast.success(
-						"Thank you for bringing this pup into the World! 🐶 woof!"
-					);
-				})
-				.finally(() => {
-					setIsLoading(false);
-					Requests.getAllDogs()
-						.then((data: Dog[]) => {
-							setAllDogs(data);
-						})
-						.catch((error) => {
-							console.log(error);
-						});
-				});
+		const { refetch } = useDisplayDogs();
 
+		const refreshForm = () => {
 			setName("");
 			setDescription("");
 			setImage(defaultSelectedImage);
 			setIsFavorite(false);
+		};
+
+		/*Not sure what benefits creating a postDog function in the provider file has over just using the fetch request here.
+		Id have to pass state for all the values in the form from the provider file, which seems to go against the idea of minimizing passing state.
+		Since these state values are only used in this component, it seems like it would be better to just keep the refresh form function and its respected state values here.
+		But maybe im just not getting how to do it the other way.*/
+
+		const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			setIsLoading(true);
+			Requests.postDog({ name, description, image, isFavorite })
+				.then(() => {
+					refreshForm();
+					toast.success(
+						"Thank you for bringing this pup into the World! 🐶 woof!"
+					);
+				})
+				.catch(() => toast.error("Congrats, you broke it! 🐶 woof!"))
+				.finally(() => {
+					refetch();
+					setIsLoading(false);
+				});
 		};
 
 		return (

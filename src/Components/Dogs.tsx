@@ -1,4 +1,4 @@
-import { useDisplayDogs } from "../Providers/display";
+import { useDisplayDogs } from "../Providers/DogProvider";
 import { DogCard } from "./DogCard";
 
 type HandleFunctions = {
@@ -10,17 +10,7 @@ export const Dogs = ({
 	handleDeleteDog,
 	handleHeartClick,
 }: HandleFunctions) => {
-	const { allDogs, activeTab } = useDisplayDogs();
-
-	const favoriteDogs = allDogs?.filter((dog) => dog.isFavorite);
-	const unfavoriteDogs = allDogs?.filter((dog) => !dog.isFavorite);
-
-	const dogsToDisplay =
-		activeTab === "none"
-			? allDogs
-			: activeTab === "favorite"
-			? favoriteDogs
-			: unfavoriteDogs;
+	const { dogsToDisplay } = useDisplayDogs();
 
 	return (
 		<>
